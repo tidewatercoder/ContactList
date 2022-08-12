@@ -126,15 +126,6 @@ def mkcontact():
     # will reverse sort by name alphabetically, and after it sorts in reverse it is assigned 0 and
     # starts the pattern over again
 
-    # subframe = [[sg.Button("Find"),sg.Button("FindAll")],[sg.Input(key='_FIND_',do_not_clear=False)]]
-    # frame2 = [[sg.Frame('',subframe)],
-    #           [sg.Multiline(xg,key='_MULTI_',size=(70,30))]]
-    ### if you wish for the find buttons and input to be on the main screen
-    # 1. untag the above subframe and frame2
-    # 2. tag the frame2 below
-    # 3. Go down to event == 'Submit' and untag values.pop[_FIND_']
-    # 4. If you scroll down, you will eventually find 2 event == 'Find', tag the first one and then untag the second one.
-    # 5. Go down to event == 'FindAll' and untag it
     frame2 = [[sg.Multiline(xg, key='_MULTI_', size=(70, 30))]]
     frame = [[sg.Text("First      "),sg.Input(key='_NAME_',size=(20,20),do_not_clear=False)],
              [sg.Text("Address "),sg.Input(key='_ADD_',size=(20,20),do_not_clear=False)],
@@ -237,69 +228,6 @@ def mkcontact():
                     for i in x:
                         xg += i
                     window.find_element("_MULTI_").Update(xg)
-
-        # elif event == "Find":
-        #     ## Will find exactly what you type john == john and nothing else, so john != john@email.com,
-        #     while True:
-        #         x = values["_FIND_"]
-        #         if x == '': ### If the find button is pressed without a value, it will pull all the contacts
-        #             # from the file and creates a separate popup for each contact.
-        #             # This part of the code helps prevent that.
-        #             break
-        #         with open('contactlist.pickle', 'rb') as g:
-        #             contactlist = pickle.load(g)
-        #         ### The code opens the pickle file to check for any newly submitted contacts that might match the value
-        #         for i in contactlist:
-        #             if x == i.name:
-        #                 sg.Popup('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #             elif x == i.address:
-        #                 sg.Popup('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #             elif x == i.phone:
-        #                 sg.Popup('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #             elif x == i.email:
-        #                 sg.Popup('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #         break
-        #     ## The code will search through the all the data for a specific match, once found
-        #     # a popup message will display all of the information pertaining to the specific value
-        # elif event == 'FindAll':
-        #     Findallist = []
-        #     ### Finds all data that has something in common with the given value
-        #     # i.e. gmail will find all of gmail, john will find all names that have john in it 'johnny,john,johnathon'.
-        #     while True:
-        #         y = values['_FIND_']
-        #         if y == '': ### Pressing FindAll with no values will return with all addresses appearing. y == '' prevents that.
-        #             break
-        #         with open('contactlist.pickle', 'rb') as g:
-        #             contactlist = pickle.load(g)
-        #         for i in contactlist:
-        #             if y in i.name:
-        #                 x = ('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #                 Findallist.append(x)
-        #             elif y in i.address:
-        #                 x = ('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #                 Findallist.append(x)
-        #             elif y in i.phone:
-        #                 x = ('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #                 Findallist.append(x)
-        #             elif y in i.email:
-        #                 x = ('Name       '+i.name+'\n'+'Address    '+i.address+'\n'+'Phone   '
-        #                         '    '+i.phone+'\n'+'Email        '+i.email+'\n'+'\n')
-        #                 Findallist.append(x)
-        #         ### The code will look through all the data to find a match, if a match is found it will be added to
-        #         # the Findallist list
-        #         xg = ''
-        #         for i in Findallist: ### Grabs the information from the list and puts them into a string
-        #             # to read the information easier
-        #             xg += i
-        #         window.find_element("_MULTI_").Update(xg)  ### Updates the MultiLine box with sorted data.
-        #         break
 
 if __name__ == '__main__':
     mkcontact()
