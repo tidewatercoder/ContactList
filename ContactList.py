@@ -164,8 +164,8 @@ def mkcontact():
                 contactlist.append(na)
                 with open('contactlist.pickle','wb') as g:
                     pickle.dump(contactlist,g,protocol=pickle.HIGHEST_PROTOCOL)
-                ## Pickle is used because pickle files can save lists and objects, without turning them into a string.
-                ## Thus keeping the integrity of the object (contact) whole.
+                ## I have found that using pickle files can keep the data like lists, dictionaries, and class objects whole and not
+                # separating them or forcing them into a string.
                 fullinfo = ('Name       '+na.name+'\n'+'Address    '+na.address+'\n'+'Phone   '
                 '    '+na.phone+'\n'+'Email        '+na.email+'\n'+'\n')
                 xg = ''
