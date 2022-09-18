@@ -1,5 +1,5 @@
 # ContactList
-Contact List made with pysimplegui
+A simple Contact List made with pysimplegui
 
 When you first run the code you must put in your first contact.
 This will create the pickle file that is required in the program.
